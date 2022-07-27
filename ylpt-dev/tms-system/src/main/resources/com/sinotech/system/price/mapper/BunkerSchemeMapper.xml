@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sinotech.system.price.mapper.BunkerSchemeMapper" >
+  <resultMap id="BaseResultMap" type="com.sinotech.system.price.model.BunkerScheme" >
+    <id column="scheme_id" property="schemeId" jdbcType="VARCHAR" />
+    <result column="tenant_id" property="tenantId" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="scheme_mode" property="schemeMode" jdbcType="VARCHAR" />
+    <result column="scheme_no" property="schemeNo" jdbcType="VARCHAR" />
+    <result column="scheme_name" property="schemeName" jdbcType="VARCHAR" />
+    <result column="relation_dept_id" property="relationDeptId" jdbcType="VARCHAR" />
+    <result column="relation_dept_name" property="relationDeptName" jdbcType="VARCHAR" />
+    <result column="product_type" property="productType" jdbcType="VARCHAR" />
+    <result column="service_level" property="serviceLevel" jdbcType="VARCHAR" />
+    <result column="item_type_id" property="itemTypeId" jdbcType="VARCHAR" />
+    <result column="item_type" property="itemType" jdbcType="VARCHAR" />
+    <result column="valid_time" property="validTime" jdbcType="TIMESTAMP" />
+    <result column="invalid_time" property="invalidTime" jdbcType="TIMESTAMP" />
+    <result column="order_price" property="orderPrice" jdbcType="DECIMAL" />
+    <result column="delete_status" property="deleteStatus" jdbcType="VARCHAR" />
+    <result column="ins_user" property="insUser" jdbcType="VARCHAR" />
+    <result column="ins_time" property="insTime" jdbcType="TIMESTAMP" />
+    <result column="upd_user" property="updUser" jdbcType="VARCHAR" />
+    <result column="upd_time" property="updTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    scheme_id, tenant_id, company_id, company_name, scheme_mode, scheme_no, scheme_name, 
+    relation_dept_id, relation_dept_name, product_type, service_level, item_type_id, 
+    item_type, valid_time, invalid_time, order_price, delete_status, ins_user, ins_time, 
+    upd_user, upd_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ba_bunker_scheme
+    where scheme_id = #{schemeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ba_bunker_scheme
+    where scheme_id = #{schemeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sinotech.system.price.model.BunkerScheme" >
+    insert into ba_bunker_scheme (scheme_id, tenant_id, company_id, 
+      company_name, scheme_mode, scheme_no, 
+      scheme_name, relation_dept_id, relation_dept_name, 
+      product_type, service_level, item_type_id, 
+      item_type, valid_time, invalid_time, 
+      order_price, delete_status, ins_user, 
+      ins_time, upd_user, upd_time
+      )
+    values (#{schemeId,jdbcType=VARCHAR}, #{tenantId,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{schemeMode,jdbcType=VARCHAR}, #{schemeNo,jdbcType=VARCHAR}, 
+      #{schemeName,jdbcType=VARCHAR}, #{relationDeptId,jdbcType=VARCHAR}, #{relationDeptName,jdbcType=VARCHAR}, 
+      #{productType,jdbcType=VARCHAR}, #{serviceLevel,jdbcType=VARCHAR}, #{itemTypeId,jdbcType=VARCHAR}, 
+      #{itemType,jdbcType=VARCHAR}, #{validTime,jdbcType=TIMESTAMP}, #{invalidTime,jdbcType=TIMESTAMP}, 
+      #{orderPrice,jdbcType=DECIMAL}, #{deleteStatus,jdbcType=VARCHAR}, #{insUser,jdbcType=VARCHAR}, 
+      #{insTime,jdbcType=TIMESTAMP}, #{updUser,jdbcType=VARCHAR}, #{updTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sinotech.system.price.model.BunkerScheme" >
+    insert into ba_bunker_scheme
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="schemeId != null" >
+        scheme_id,
+      </if>
+      <if test="tenantId != null" >
+        tenant_id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="schemeMode != null" >
+        scheme_mode,
+      </if>
+      <if test="schemeNo != null" >
+        scheme_no,
+      </if>
+      <if test="schemeName != null" >
+        scheme_name,
+      </if>
+      <if test="relationDeptId != null" >
+        relation_dept_id,
+      </if>
+      <if test="relationDeptName != null" >
+        relation_dept_name,
+      </if>
+      <if test="productType != null" >
+        product_type,
+      </if>
+      <if test="serviceLevel != null" >
+        service_level,
+      </if>
+      <if test="itemTypeId != null" >
+        item_type_id,
+      </if>
+      <if test="itemType != null" >
+        item_type,
+      </if>
+      <if test="validTime != null" >
+        valid_time,
+      </if>
+      <if test="invalidTime != null" >
+        invalid_time,
+      </if>
+      <if test="orderPrice != null" >
+        order_price,
+      </if>
+      <if test="deleteStatus != null" >
+        delete_status,
+      </if>
+      <if test="insUser != null" >
+        ins_user,
+      </if>
+      <if test="insTime != null" >
+        ins_time,
+      </if>
+      <if test="updUser != null" >
+        upd_user,
+      </if>
+      <if test="updTime != null" >
+        upd_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="schemeId != null" >
+        #{schemeId,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="schemeMode != null" >
+        #{schemeMode,jdbcType=VARCHAR},
+      </if>
+      <if test="schemeNo != null" >
+        #{schemeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="schemeName != null" >
+        #{schemeName,jdbcType=VARCHAR},
+      </if>
+      <if test="relationDeptId != null" >
+        #{relationDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="relationDeptName != null" >
+        #{relationDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null" >
+        #{productType,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceLevel != null" >
+        #{serviceLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="itemTypeId != null" >
+        #{itemTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null" >
+        #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="validTime != null" >
+        #{validTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invalidTime != null" >
+        #{invalidTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderPrice != null" >
+        #{orderPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="deleteStatus != null" >
+        #{deleteStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="insUser != null" >
+        #{insUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insTime != null" >
+        #{insTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updUser != null" >
+        #{updUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updTime != null" >
+        #{updTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sinotech.system.price.model.BunkerScheme" >
+    update ba_bunker_scheme
+    <set >
+      <if test="tenantId != null" >
+        tenant_id = #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="schemeMode != null" >
+        scheme_mode = #{schemeMode,jdbcType=VARCHAR},
+      </if>
+      <if test="schemeNo != null" >
+        scheme_no = #{schemeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="schemeName != null" >
+        scheme_name = #{schemeName,jdbcType=VARCHAR},
+      </if>
+      <if test="relationDeptId != null" >
+        relation_dept_id = #{relationDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="relationDeptName != null" >
+        relation_dept_name = #{relationDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null" >
+        product_type = #{productType,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceLevel != null" >
+        service_level = #{serviceLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="itemTypeId != null" >
+        item_type_id = #{itemTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null" >
+        item_type = #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="validTime != null" >
+        valid_time = #{validTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invalidTime != null" >
+        invalid_time = #{invalidTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderPrice != null" >
+        order_price = #{orderPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="deleteStatus != null" >
+        delete_status = #{deleteStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="insUser != null" >
+        ins_user = #{insUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insTime != null" >
+        ins_time = #{insTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updUser != null" >
+        upd_user = #{updUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updTime != null" >
+        upd_time = #{updTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where scheme_id = #{schemeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sinotech.system.price.model.BunkerScheme" >
+    update ba_bunker_scheme
+    set tenant_id = #{tenantId,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      scheme_mode = #{schemeMode,jdbcType=VARCHAR},
+      scheme_no = #{schemeNo,jdbcType=VARCHAR},
+      scheme_name = #{schemeName,jdbcType=VARCHAR},
+      relation_dept_id = #{relationDeptId,jdbcType=VARCHAR},
+      relation_dept_name = #{relationDeptName,jdbcType=VARCHAR},
+      product_type = #{productType,jdbcType=VARCHAR},
+      service_level = #{serviceLevel,jdbcType=VARCHAR},
+      item_type_id = #{itemTypeId,jdbcType=VARCHAR},
+      item_type = #{itemType,jdbcType=VARCHAR},
+      valid_time = #{validTime,jdbcType=TIMESTAMP},
+      invalid_time = #{invalidTime,jdbcType=TIMESTAMP},
+      order_price = #{orderPrice,jdbcType=DECIMAL},
+      delete_status = #{deleteStatus,jdbcType=VARCHAR},
+      ins_user = #{insUser,jdbcType=VARCHAR},
+      ins_time = #{insTime,jdbcType=TIMESTAMP},
+      upd_user = #{updUser,jdbcType=VARCHAR},
+      upd_time = #{updTime,jdbcType=TIMESTAMP}
+    where scheme_id = #{schemeId,jdbcType=VARCHAR}
+  </update>
+
+    <select id="selectListForCheck" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from ba_bunker_scheme
+        where 1 = 1
+        <if test="companyId != null and companyId != ''">
+            and company_id = #{companyId,jdbcType=VARCHAR}
+        </if>
+        <if test="schemeMode != null and schemeMode != ''">
+            and scheme_mode = #{schemeMode,jdbcType=VARCHAR}
+        </if>
+        <if test="relationDeptId != null and relationDeptId != ''">
+            and relation_dept_id = #{relationDeptId,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="selectListForUnique" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ba_bunker_scheme
+        where 1=1
+        <if test="schemeNo != null and schemeNo != ''">
+            and scheme_no = #{schemeNo,jdbcType=VARCHAR}
+        </if>
+        <if test="schemeName != null and schemeName != ''">
+            and scheme_name = #{schemeName,jdbcType=VARCHAR}
+        </if>
+        limit 10
+    </select>
+    <select id="selectBunkerSchemeByIds" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from ba_bunker_scheme
+        where 1 = 1
+        and scheme_id in
+        <foreach collection="schemeIdList" item="item" open="(" separator="," close=")">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </select>
+    <update id="deleteByIds">
+        update ba_bunker_scheme set delete_status=1
+        where scheme_id in
+        <foreach collection="schemeIdList" item="item" open="(" separator="," close=")">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <select id="selectBunkerSchemeList" resultMap="BaseResultMap"
+            parameterType="com.sinotech.system.price.model.BunkerSchemeVO">
+        select
+        <include refid="Base_Column_List"/>
+        from ba_bunker_scheme
+        where 1 = 1
+        <if test="relationDeptId != null and relationDeptId != ''">
+            and relation_dept_id = #{relationDeptId,jdbcType=VARCHAR}
+        </if>
+        <if test="companyId != null and companyId != ''">
+            and company_id = #{companyId,jdbcType=VARCHAR}
+        </if>
+        <if test="schemeNo != null and schemeNo != ''">
+            and scheme_no like concat(concat('%',#{schemeNo,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test="schemeName != null and schemeName != ''">
+            and scheme_name like concat(concat('%',#{schemeName,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test="schemeStatus != null and schemeStatus != ''">
+            <choose>
+                <when test='schemeStatus == "19801"'>
+                    and valid_time <![CDATA[>]]> #{nowDate,jdbcType=TIMESTAMP}
+                    and delete_status=0
+                </when>
+                <when test='schemeStatus == "19802"'>
+                    and valid_time <![CDATA[<=]]> #{nowDate,jdbcType=TIMESTAMP}
+                    and invalid_time <![CDATA[>]]> #{nowDate,jdbcType=TIMESTAMP}
+                    and delete_status=0
+                </when>
+                <when test='schemeStatus == "19803"'>
+                    and invalid_time <![CDATA[<=]]> #{nowDate,jdbcType=TIMESTAMP}
+                    and delete_status=0
+                </when>
+                <when test='schemeStatus == "19804"'>
+                    and delete_status=1
+                </when>
+                <otherwise></otherwise>
+            </choose>
+        </if>
+    </select>
+    <update id="updateBunkerSchemeTimeBySchemeIds">
+        update ba_bunker_scheme
+        <set >
+            <if test="validTime != null" >
+                valid_time = #{validTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="invalidTime != null" >
+                invalid_time = #{invalidTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where scheme_id in
+        <foreach collection="schemeIdList" item="item" open="(" separator="," close=")">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <select id="selectAll"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from ba_bunker_scheme
+    where delete_status=0
+  </select>
+
+    <insert id="batchInsertSelective" parameterType="java.util.List">
+        insert into ba_bunker_scheme ( tenant_id, company_id,
+        company_name, scheme_id,scheme_mode, scheme_no,
+        scheme_name,relation_dept_id, relation_dept_name,item_type_id,
+        item_type,   product_type, service_level, order_price,
+        valid_time, invalid_time,
+         delete_status, ins_user,
+        ins_time, upd_user, upd_time
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (<choose>
+            <when test="item.tenantId != null">
+                #{item.tenantId,jdbcType=VARCHAR},
+            </when>
+            <otherwise>
+                DEFAULT,
+            </otherwise>
+        </choose>
+            <choose>
+                <when test="item.companyId != null">
+                    #{item.companyId,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.companyName != null">
+                    #{item.companyName,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.schemeId != null">
+                    #{item.schemeId,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.schemeMode != null">
+                    #{item.schemeMode,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.schemeNo != null">
+                    #{item.schemeNo,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.schemeName != null">
+                    #{item.schemeName,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.relationDeptId != null">
+                    #{item.relationDeptId,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.relationDeptName != null">
+                    #{item.relationDeptName ,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.itemTypeId != null">
+                    #{item.itemTypeId,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.itemType != null">
+                    #{item.itemType,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.productType != null">
+                    #{item.productType,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.serviceLevel != null">
+                    #{item.serviceLevel,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.orderPrice != null">
+                    #{item.orderPrice,jdbcType=DECIMAL},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+
+            <choose>
+                <when test="item.validTime != null">
+                    #{item.validTime,jdbcType=TIMESTAMP},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.invalidTime != null">
+                    #{item.invalidTime,jdbcType=TIMESTAMP},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.deleteStatus != null">
+                    #{item.deleteStatus,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.insUser != null">
+                    #{item.insUser,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.insTime != null">
+                    #{item.insTime,jdbcType=TIMESTAMP},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.updUser != null">
+                    #{item.updUser,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.updTime != null">
+                    #{item.updTime,jdbcType=TIMESTAMP}
+                </when>
+                <otherwise>
+                    DEFAULT
+                </otherwise>
+            </choose>)
+        </foreach>
+    </insert>
+</mapper>

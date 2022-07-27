@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinotech.system.provincePrice.mapper.ProvinceStageSchemeDtlMapper">
+  <resultMap id="BaseResultMap" type="com.sinotech.system.provincePrice.model.ProvinceStageSchemeDtl">
+    <id column="scheme_dtl_id" jdbcType="VARCHAR" property="schemeDtlId" />
+    <result column="tenant_id" jdbcType="VARCHAR" property="tenantId" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="scheme_id" jdbcType="VARCHAR" property="schemeId" />
+    <result column="data_type" jdbcType="VARCHAR" property="dataType" />
+    <result column="first_freight" jdbcType="DECIMAL" property="firstFreight" />
+    <result column="first_standard" jdbcType="DECIMAL" property="firstStandard" />
+    <result column="lower_limit" jdbcType="DECIMAL" property="lowerLimit" />
+    <result column="upper_limit" jdbcType="DECIMAL" property="upperLimit" />
+    <result column="add_type" jdbcType="DECIMAL" property="addType" />
+    <result column="continue_price" jdbcType="DECIMAL" property="continuePrice" />
+    <result column="max_price" jdbcType="DECIMAL" property="maxPrice" />
+    <result column="ins_user" jdbcType="VARCHAR" property="insUser" />
+    <result column="ins_time" jdbcType="TIMESTAMP" property="insTime" />
+    <result column="upd_user" jdbcType="VARCHAR" property="updUser" />
+    <result column="upd_time" jdbcType="TIMESTAMP" property="updTime" />
+      <result column="delete_status" jdbcType="VARCHAR" property="deleteState" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    scheme_dtl_id, tenant_id, company_id, scheme_id, data_type, first_freight, first_standard, 
+    lower_limit, upper_limit, add_type, continue_price max_price, ins_user,
+    ins_time, upd_user, upd_time,delete_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ba_province_stage_scheme_dtl
+    where scheme_dtl_id = #{schemeDtlId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    update ba_province_stage_scheme_dtl set delete_status=1
+    where scheme_dtl_id = #{schemeDtlId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sinotech.system.provincePrice.model.ProvinceStageSchemeDtl">
+    insert into ba_province_stage_scheme_dtl (scheme_dtl_id, tenant_id, company_id, 
+      scheme_id, data_type, first_freight, 
+      first_standard, lower_limit, upper_limit, 
+      add_type, continue_price,
+      max_price, ins_user, ins_time, 
+      upd_user, upd_time)
+    values (#{schemeDtlId,jdbcType=VARCHAR}, #{tenantId,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
+      #{schemeId,jdbcType=VARCHAR}, #{dataType,jdbcType=VARCHAR}, #{firstFreight,jdbcType=DECIMAL}, 
+      #{firstStandard,jdbcType=DECIMAL}, #{lowerLimit,jdbcType=DECIMAL}, #{upperLimit,jdbcType=DECIMAL}, 
+      #{addType,jdbcType=DECIMAL}, #{continuePrice,jdbcType=DECIMAL},
+      #{maxPrice,jdbcType=DECIMAL}, #{insUser,jdbcType=VARCHAR}, #{insTime,jdbcType=TIMESTAMP}, 
+      #{updUser,jdbcType=VARCHAR}, #{updTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sinotech.system.provincePrice.model.ProvinceStageSchemeDtl">
+    insert into ba_province_stage_scheme_dtl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="schemeDtlId != null">
+        scheme_dtl_id,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="schemeId != null">
+        scheme_id,
+      </if>
+      <if test="dataType != null">
+        data_type,
+      </if>
+      <if test="firstFreight != null">
+        first_freight,
+      </if>
+      <if test="firstStandard != null">
+        first_standard,
+      </if>
+      <if test="lowerLimit != null">
+        lower_limit,
+      </if>
+      <if test="upperLimit != null">
+        upper_limit,
+      </if>
+      <if test="addType != null">
+        add_type,
+      </if>
+      <if test="continuePrice != null">
+        continue_price,
+      </if>
+      <if test="maxPrice != null">
+        max_price,
+      </if>
+      <if test="insUser != null">
+        ins_user,
+      </if>
+      <if test="insTime != null">
+        ins_time,
+      </if>
+      <if test="updUser != null">
+        upd_user,
+      </if>
+      <if test="updTime != null">
+        upd_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="schemeDtlId != null">
+        #{schemeDtlId,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="schemeId != null">
+        #{schemeId,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null">
+        #{dataType,jdbcType=VARCHAR},
+      </if>
+      <if test="firstFreight != null">
+        #{firstFreight,jdbcType=DECIMAL},
+      </if>
+      <if test="firstStandard != null">
+        #{firstStandard,jdbcType=DECIMAL},
+      </if>
+      <if test="lowerLimit != null">
+        #{lowerLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="upperLimit != null">
+        #{upperLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="addType != null">
+        #{addType,jdbcType=DECIMAL},
+      </if>
+      <if test="continuePrice != null">
+        #{continuePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="maxPrice != null">
+        #{maxPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="insUser != null">
+        #{insUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insTime != null">
+        #{insTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updUser != null">
+        #{updUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updTime != null">
+        #{updTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sinotech.system.provincePrice.model.ProvinceStageSchemeDtl">
+    update ba_province_stage_scheme_dtl
+    <set>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="schemeId != null">
+        scheme_id = #{schemeId,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null">
+        data_type = #{dataType,jdbcType=VARCHAR},
+      </if>
+      <if test="firstFreight != null">
+        first_freight = #{firstFreight,jdbcType=DECIMAL},
+      </if>
+      <if test="firstStandard != null">
+        first_standard = #{firstStandard,jdbcType=DECIMAL},
+      </if>
+      <if test="lowerLimit != null">
+        lower_limit = #{lowerLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="upperLimit != null">
+        upper_limit = #{upperLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="addType != null">
+        add_type = #{addType,jdbcType=DECIMAL},
+      </if>
+      <if test="continuePrice != null">
+        continue_price = #{continuePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="maxPrice != null">
+        max_price = #{maxPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="insUser != null">
+        ins_user = #{insUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insTime != null">
+        ins_time = #{insTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updUser != null">
+        upd_user = #{updUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updTime != null">
+        upd_time = #{updTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where scheme_dtl_id = #{schemeDtlId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sinotech.system.provincePrice.model.ProvinceStageSchemeDtl">
+    update ba_province_stage_scheme_dtl
+    set tenant_id = #{tenantId,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      scheme_id = #{schemeId,jdbcType=VARCHAR},
+      data_type = #{dataType,jdbcType=VARCHAR},
+      first_freight = #{firstFreight,jdbcType=DECIMAL},
+      first_standard = #{firstStandard,jdbcType=DECIMAL},
+      lower_limit = #{lowerLimit,jdbcType=DECIMAL},
+      upper_limit = #{upperLimit,jdbcType=DECIMAL},
+      add_type = #{addType,jdbcType=DECIMAL},
+      continue_price = #{continuePrice,jdbcType=DECIMAL},
+      max_price = #{maxPrice,jdbcType=DECIMAL},
+      ins_user = #{insUser,jdbcType=VARCHAR},
+      ins_time = #{insTime,jdbcType=TIMESTAMP},
+      upd_user = #{updUser,jdbcType=VARCHAR},
+      upd_time = #{updTime,jdbcType=TIMESTAMP}
+    where scheme_dtl_id = #{schemeDtlId,jdbcType=VARCHAR}
+  </update>
+    <insert id="batchInsertSelective" parameterType="java.util.List">
+        insert into ba_province_stage_scheme_dtl(tenant_id,company_id,scheme_id,data_type,
+        scheme_dtl_id,first_freight,first_standard,
+        lower_limit,upper_limit,add_type,
+        continue_price,max_price,
+        ins_user,ins_time,upd_user,
+        upd_time)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (<choose>
+            <when test="item.tenantId != null">
+                #{item.tenantId,jdbcType=VARCHAR},
+            </when>
+            <otherwise>
+                DEFAULT,
+            </otherwise>
+        </choose>
+            <choose>
+                <when test="item.companyId != null">
+                    #{item.companyId,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.schemeId != null">
+                    #{item.schemeId,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.dataType != null">
+                    #{item.dataType,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.schemeDtlId != null">
+                    #{item.schemeDtlId,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.firstFreight != null">
+                    #{item.firstFreight,jdbcType=DECIMAL},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.firstStandard != null">
+                    #{item.firstStandard,jdbcType=DECIMAL},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.lowerLimit != null">
+                    #{item.lowerLimit,jdbcType=DECIMAL},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.upperLimit != null">
+                    #{item.upperLimit,jdbcType=DECIMAL},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.addType != null">
+                    #{item.addType,jdbcType=DECIMAL},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.continuePrice != null">
+                    #{item.continuePrice,jdbcType=DECIMAL},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.maxPrice != null">
+                    #{item.maxPrice,jdbcType=DECIMAL},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.insUser != null">
+                    #{item.insUser,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.insTime != null">
+                    #{item.insTime,jdbcType=TIMESTAMP},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.updUser != null">
+                    #{item.updUser,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.updTime != null">
+                    #{item.updTime,jdbcType=TIMESTAMP}
+                </when>
+                <otherwise>
+                    DEFAULT
+                </otherwise>
+            </choose>)
+        </foreach>
+    </insert>
+
+    <delete id="deleteBySchemeIdList" parameterType="java.lang.String" >
+        update ba_province_stage_scheme_dtl set delete_status=1
+        where scheme_id in
+        <foreach collection="schemeIdList" item="item" open="(" separator="," close=")">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </delete>
+
+    <select id="selectStageSchemeDtlBySchemeId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ba_province_stage_scheme_dtl
+        where scheme_id = #{schemeId,jdbcType=VARCHAR}
+        order by lower_limit
+    </select>
+    <select id="selectStageSchemeDtlBySchemeIds" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ba_province_stage_scheme_dtl
+        where scheme_id in
+        <foreach collection="schemeIdList" item="item" open="(" separator="," close=")">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </select>
+</mapper>

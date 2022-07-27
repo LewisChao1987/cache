@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinotech.system.provincePrice.mapper.ProvinceStageSchemeMapper">
+    <resultMap id="BaseResultMap" type="com.sinotech.system.provincePrice.model.ProvinceStageScheme">
+        <id column="scheme_id" jdbcType="VARCHAR" property="schemeId"/>
+        <result column="tenant_id" jdbcType="VARCHAR" property="tenantId"/>
+        <result column="company_id" jdbcType="VARCHAR" property="companyId"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="scheme_no" jdbcType="VARCHAR" property="schemeNo"/>
+        <result column="scheme_name" jdbcType="VARCHAR" property="schemeName"/>
+        <result column="bill_area_id" jdbcType="VARCHAR" property="billAreaId"/>
+        <result column="bill_area_no" jdbcType="VARCHAR" property="billAreaNo"/>
+        <result column="bill_area_name" jdbcType="VARCHAR" property="billAreaName"/>
+        <result column="disc_area_id" jdbcType="VARCHAR" property="discAreaId"/>
+        <result column="disc_area_no" jdbcType="VARCHAR" property="discAreaNo"/>
+        <result column="disc_area_name" jdbcType="VARCHAR" property="discAreaName"/>
+        <result column="item_type_id" jdbcType="VARCHAR" property="itemTypeId"/>
+        <result column="item_type" jdbcType="VARCHAR" property="itemType"/>
+        <result column="product_type" jdbcType="VARCHAR" property="productType"/>
+        <result column="service_level" jdbcType="VARCHAR" property="serviceLevel"/>
+        <result column="order_price" jdbcType="DECIMAL" property="orderPrice"/>
+        <result column="valid_time" jdbcType="TIMESTAMP" property="validTime"/>
+        <result column="invalid_time" jdbcType="TIMESTAMP" property="invalidTime"/>
+        <result column="ins_user" jdbcType="VARCHAR" property="insUser"/>
+        <result column="ins_time" jdbcType="TIMESTAMP" property="insTime"/>
+        <result column="upd_user" jdbcType="VARCHAR" property="updUser"/>
+        <result column="upd_time" jdbcType="TIMESTAMP" property="updTime"/>
+        <result column="bill_area_type" jdbcType="VARCHAR" property="billAreaType"/>
+        <result column="disc_area_type" jdbcType="VARCHAR" property="discAreaType"/>
+        <result column="delete_status" jdbcType="VARCHAR" property="deleteStatus"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    scheme_id, tenant_id, company_id, company_name, scheme_no, scheme_name, bill_area_id, 
+    bill_area_no, bill_area_name, disc_area_id, disc_area_no, disc_area_name, item_type_id, 
+    item_type, product_type, service_level, order_price, valid_time, invalid_time,
+    ins_user, ins_time, upd_user, upd_time, bill_area_type, disc_area_type,delete_status
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ba_province_stage_scheme
+        where scheme_id = #{schemeId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    update ba_province_stage_scheme set delete_status=1
+    where scheme_id = #{schemeId,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.sinotech.system.provincePrice.model.ProvinceStageScheme">
+    insert into ba_province_stage_scheme (scheme_id, tenant_id, company_id, 
+      company_name, scheme_no, scheme_name, 
+      bill_area_id, bill_area_no, bill_area_name, 
+      disc_area_id, disc_area_no, disc_area_name, 
+      item_type_id, item_type, product_type, 
+      service_level, order_price,
+      valid_time, invalid_time, ins_user, 
+      ins_time, upd_user, upd_time, 
+      bill_area_type, disc_area_type,delete_status)
+    values (#{schemeId,jdbcType=VARCHAR}, #{tenantId,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{schemeNo,jdbcType=VARCHAR}, #{schemeName,jdbcType=VARCHAR}, 
+      #{billAreaId,jdbcType=VARCHAR}, #{billAreaNo,jdbcType=VARCHAR}, #{billAreaName,jdbcType=VARCHAR}, 
+      #{discAreaId,jdbcType=VARCHAR}, #{discAreaNo,jdbcType=VARCHAR}, #{discAreaName,jdbcType=VARCHAR}, 
+      #{itemTypeId,jdbcType=VARCHAR}, #{itemType,jdbcType=VARCHAR}, #{productType,jdbcType=VARCHAR}, 
+      #{serviceLevel,jdbcType=VARCHAR}, #{orderPrice,jdbcType=DECIMAL},
+      #{validTime,jdbcType=TIMESTAMP}, #{invalidTime,jdbcType=TIMESTAMP}, #{insUser,jdbcType=VARCHAR}, 
+      #{insTime,jdbcType=TIMESTAMP}, #{updUser,jdbcType=VARCHAR}, #{updTime,jdbcType=TIMESTAMP}, 
+      #{billAreaType,jdbcType=VARCHAR}, #{discAreaType,jdbcType=VARCHAR},0)
+  </insert>
+    <insert id="insertSelective" parameterType="com.sinotech.system.provincePrice.model.ProvinceStageScheme">
+        insert into ba_province_stage_scheme
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            delete_status,
+            <if test="schemeId != null">
+                scheme_id,
+            </if>
+            <if test="tenantId != null">
+                tenant_id,
+            </if>
+            <if test="companyId != null">
+                company_id,
+            </if>
+            <if test="companyName != null">
+                company_name,
+            </if>
+            <if test="schemeNo != null">
+                scheme_no,
+            </if>
+            <if test="schemeName != null">
+                scheme_name,
+            </if>
+            <if test="billAreaId != null">
+                bill_area_id,
+            </if>
+            <if test="billAreaNo != null">
+                bill_area_no,
+            </if>
+            <if test="billAreaName != null">
+                bill_area_name,
+            </if>
+            <if test="discAreaId != null">
+                disc_area_id,
+            </if>
+            <if test="discAreaNo != null">
+                disc_area_no,
+            </if>
+            <if test="discAreaName != null">
+                disc_area_name,
+            </if>
+            <if test="itemTypeId != null">
+                item_type_id,
+            </if>
+            <if test="itemType != null">
+                item_type,
+            </if>
+            <if test="productType != null">
+                product_type,
+            </if>
+            <if test="serviceLevel != null">
+                service_level,
+            </if>
+            <if test="orderPrice != null">
+                order_price,
+            </if>
+
+            <if test="validTime != null">
+                valid_time,
+            </if>
+            <if test="invalidTime != null">
+                invalid_time,
+            </if>
+            <if test="insUser != null">
+                ins_user,
+            </if>
+            <if test="insTime != null">
+                ins_time,
+            </if>
+            <if test="updUser != null">
+                upd_user,
+            </if>
+            <if test="updTime != null">
+                upd_time,
+            </if>
+            <if test="billAreaType != null">
+                bill_area_type,
+            </if>
+            <if test="discAreaType != null">
+                disc_area_type,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            0,
+            <if test="schemeId != null">
+                #{schemeId,jdbcType=VARCHAR},
+            </if>
+            <if test="tenantId != null">
+                #{tenantId,jdbcType=VARCHAR},
+            </if>
+            <if test="companyId != null">
+                #{companyId,jdbcType=VARCHAR},
+            </if>
+            <if test="companyName != null">
+                #{companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="schemeNo != null">
+                #{schemeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="schemeName != null">
+                #{schemeName,jdbcType=VARCHAR},
+            </if>
+            <if test="billAreaId != null">
+                #{billAreaId,jdbcType=VARCHAR},
+            </if>
+            <if test="billAreaNo != null">
+                #{billAreaNo,jdbcType=VARCHAR},
+            </if>
+            <if test="billAreaName != null">
+                #{billAreaName,jdbcType=VARCHAR},
+            </if>
+            <if test="discAreaId != null">
+                #{discAreaId,jdbcType=VARCHAR},
+            </if>
+            <if test="discAreaNo != null">
+                #{discAreaNo,jdbcType=VARCHAR},
+            </if>
+            <if test="discAreaName != null">
+                #{discAreaName,jdbcType=VARCHAR},
+            </if>
+            <if test="itemTypeId != null">
+                #{itemTypeId,jdbcType=VARCHAR},
+            </if>
+            <if test="itemType != null">
+                #{itemType,jdbcType=VARCHAR},
+            </if>
+            <if test="productType != null">
+                #{productType,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceLevel != null">
+                #{serviceLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="orderPrice != null">
+                #{orderPrice,jdbcType=DECIMAL},
+            </if>
+
+            <if test="validTime != null">
+                #{validTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="invalidTime != null">
+                #{invalidTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="insUser != null">
+                #{insUser,jdbcType=VARCHAR},
+            </if>
+            <if test="insTime != null">
+                #{insTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updUser != null">
+                #{updUser,jdbcType=VARCHAR},
+            </if>
+            <if test="updTime != null">
+                #{updTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="billAreaType != null">
+                #{billAreaType,jdbcType=VARCHAR},
+            </if>
+            <if test="discAreaType != null">
+                #{discAreaType,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.sinotech.system.provincePrice.model.ProvinceStageScheme">
+        update ba_province_stage_scheme
+        <set>
+            <if test="tenantId != null">
+                tenant_id = #{tenantId,jdbcType=VARCHAR},
+            </if>
+            <if test="companyId != null">
+                company_id = #{companyId,jdbcType=VARCHAR},
+            </if>
+            <if test="companyName != null">
+                company_name = #{companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="schemeNo != null">
+                scheme_no = #{schemeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="schemeName != null">
+                scheme_name = #{schemeName,jdbcType=VARCHAR},
+            </if>
+            <if test="billAreaId != null">
+                bill_area_id = #{billAreaId,jdbcType=VARCHAR},
+            </if>
+            <if test="billAreaNo != null">
+                bill_area_no = #{billAreaNo,jdbcType=VARCHAR},
+            </if>
+            <if test="billAreaName != null">
+                bill_area_name = #{billAreaName,jdbcType=VARCHAR},
+            </if>
+            <if test="discAreaId != null">
+                disc_area_id = #{discAreaId,jdbcType=VARCHAR},
+            </if>
+            <if test="discAreaNo != null">
+                disc_area_no = #{discAreaNo,jdbcType=VARCHAR},
+            </if>
+            <if test="discAreaName != null">
+                disc_area_name = #{discAreaName,jdbcType=VARCHAR},
+            </if>
+            <if test="itemTypeId != null">
+                item_type_id = #{itemTypeId,jdbcType=VARCHAR},
+            </if>
+            <if test="itemType != null">
+                item_type = #{itemType,jdbcType=VARCHAR},
+            </if>
+            <if test="productType != null">
+                product_type = #{productType,jdbcType=VARCHAR},
+            </if>
+            <if test="serviceLevel != null">
+                service_level = #{serviceLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="orderPrice != null">
+                order_price = #{orderPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="validTime != null">
+                valid_time = #{validTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="invalidTime != null">
+                invalid_time = #{invalidTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="insUser != null">
+                ins_user = #{insUser,jdbcType=VARCHAR},
+            </if>
+            <if test="insTime != null">
+                ins_time = #{insTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updUser != null">
+                upd_user = #{updUser,jdbcType=VARCHAR},
+            </if>
+            <if test="updTime != null">
+                upd_time = #{updTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="billAreaType != null">
+                bill_area_type = #{billAreaType,jdbcType=VARCHAR},
+            </if>
+            <if test="discAreaType != null">
+                disc_area_type = #{discAreaType,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where scheme_id = #{schemeId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.sinotech.system.provincePrice.model.ProvinceStageScheme">
+    update ba_province_stage_scheme
+    set tenant_id = #{tenantId,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      scheme_no = #{schemeNo,jdbcType=VARCHAR},
+      scheme_name = #{schemeName,jdbcType=VARCHAR},
+      bill_area_id = #{billAreaId,jdbcType=VARCHAR},
+      bill_area_no = #{billAreaNo,jdbcType=VARCHAR},
+      bill_area_name = #{billAreaName,jdbcType=VARCHAR},
+      disc_area_id = #{discAreaId,jdbcType=VARCHAR},
+      disc_area_no = #{discAreaNo,jdbcType=VARCHAR},
+      disc_area_name = #{discAreaName,jdbcType=VARCHAR},
+      item_type_id = #{itemTypeId,jdbcType=VARCHAR},
+      item_type = #{itemType,jdbcType=VARCHAR},
+      product_type = #{productType,jdbcType=VARCHAR},
+      service_level = #{serviceLevel,jdbcType=VARCHAR},
+      order_price = #{orderPrice,jdbcType=DECIMAL},
+      valid_time = #{validTime,jdbcType=TIMESTAMP},
+      invalid_time = #{invalidTime,jdbcType=TIMESTAMP},
+      ins_user = #{insUser,jdbcType=VARCHAR},
+      ins_time = #{insTime,jdbcType=TIMESTAMP},
+      upd_user = #{updUser,jdbcType=VARCHAR},
+      upd_time = #{updTime,jdbcType=TIMESTAMP},
+      bill_area_type = #{billAreaType,jdbcType=VARCHAR},
+      disc_area_type = #{discAreaType,jdbcType=VARCHAR}
+    where scheme_id = #{schemeId,jdbcType=VARCHAR}
+  </update>
+
+    <select id="selectListForCheck" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ba_province_stage_scheme
+        where 1=1
+        <if test="companyId != null and companyId != ''">
+            and company_id = #{companyId,jdbcType=VARCHAR}
+        </if>
+        <choose>
+            <when test="billAreaId != null and billAreaId != ''">
+                and bill_area_id = #{billAreaId,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and ifnull(bill_area_id, '') = ''
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="discAreaId != null and discAreaId != ''">
+                and disc_area_id = #{discAreaId,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and ifnull(disc_area_id, '') = ''
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="selectListForUnique" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ba_province_stage_scheme
+        where 1=1
+        <if test="schemeNo != null and schemeNo != ''">
+            and scheme_no = #{schemeNo,jdbcType=VARCHAR}
+        </if>
+        <if test="schemeName != null and schemeName != ''">
+            and scheme_name = #{schemeName,jdbcType=VARCHAR}
+        </if>
+        limit 5
+    </select>
+
+    <select id="selectProvinceStageSchemeByIds" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ba_province_stage_scheme
+        where 1=1
+        and scheme_id in
+        <foreach collection="schemeIdList" item="item" open="(" separator="," close=")">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </select>
+
+    <update id="deleteByIds">
+        update ba_province_stage_scheme set delete_status=1
+        where scheme_id in
+        <foreach collection="schemeIdList" item="item" open="(" separator="," close=")">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <select id="selectProvinceStageSchemeList" resultMap="BaseResultMap"
+            parameterType="com.sinotech.system.provincePrice.model.ProvinceStageSchemeVO">
+        select
+        <include refid="Base_Column_List"/>
+        from ba_province_stage_scheme
+        where 1 = 1
+        <if test="companyId != null and companyId != ''">
+            and company_id = #{companyId,jdbcType=VARCHAR}
+        </if>
+        <if test="billAreaId != null and billAreaId != ''">
+            and bill_area_id = #{billAreaId,jdbcType=VARCHAR}
+        </if>
+        <if test="discAreaId != null and discAreaId != ''">
+            and disc_area_id = #{discAreaId,jdbcType=VARCHAR}
+        </if>
+        <if test="schemeNo != null and schemeNo != ''">
+            and scheme_no like concat(concat('%',#{schemeNo,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test="schemeName != null and schemeName != ''">
+            and scheme_name like concat(concat('%',#{schemeName,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test="schemeStatus != null and schemeStatus != ''">
+            <choose>
+                <when test='schemeStatus == "19801"'>
+                    and valid_time <![CDATA[>]]> #{nowDate,jdbcType=TIMESTAMP}
+                    and delete_status=0
+                </when>
+                <when test='schemeStatus == "19802"'>
+                    and valid_time <![CDATA[<=]]> #{nowDate,jdbcType=TIMESTAMP}
+                    and invalid_time <![CDATA[>]]> #{nowDate,jdbcType=TIMESTAMP}
+                    and delete_status=0
+                </when>
+                <when test='schemeStatus == "19803"'>
+                    and invalid_time <![CDATA[<=]]> #{nowDate,jdbcType=TIMESTAMP}
+                    and delete_status=0
+                </when>
+                <when test='schemeStatus == "19804"'>
+                    and delete_status=1
+                </when>
+                <otherwise></otherwise>
+            </choose>
+        </if>
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ba_province_stage_scheme
+        where delete_status = 0
+    </select>
+
+    <insert id="batchInsertSelective" parameterType="java.util.List">
+        insert into ba_province_stage_scheme(tenant_id,company_id,company_name,
+        scheme_id,scheme_no,scheme_name,
+        bill_area_id,bill_area_no,bill_area_name,
+        bill_area_type,disc_area_id,disc_area_no,
+        disc_area_name,disc_area_type,item_type_id,
+        item_type,product_type,service_level,
+        order_price,valid_time,
+        invalid_time,delete_status,ins_user,ins_time,
+        upd_user,upd_time)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <choose>
+                <when test="item.tenantId != null">
+                    #{item.tenantId,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.companyId != null">
+                    #{item.companyId,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.companyName != null">
+                    #{item.companyName,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.schemeId != null">
+                    #{item.schemeId,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.schemeNo != null">
+                    #{item.schemeNo,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.schemeName != null">
+                    #{item.schemeName,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.billAreaId != null">
+                    #{item.billAreaId,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.billAreaNo != null">
+                    #{item.billAreaNo,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.billAreaName != null">
+                    #{item.billAreaName,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.billAreaType != null">
+                    #{item.billAreaType,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.discAreaId != null">
+                    #{item.discAreaId,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.discAreaNo != null">
+                    #{item.discAreaNo,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.discAreaName != null">
+                    #{item.discAreaName,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.discAreaType != null">
+                    #{item.discAreaType,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.itemTypeId != null">
+                    #{item.itemTypeId,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.itemType != null">
+                    #{item.itemType,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.productType != null">
+                    #{item.productType,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.serviceLevel != null">
+                    #{item.serviceLevel,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.orderPrice != null">
+                    #{item.orderPrice,jdbcType=DECIMAL},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.validTime != null">
+                    #{item.validTime,jdbcType=TIMESTAMP},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.invalidTime != null">
+                    #{item.invalidTime,jdbcType=TIMESTAMP},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.deleteStatus != null">
+                    #{item.deleteStatus,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.insUser != null">
+                    #{item.insUser,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.insTime != null">
+                    #{item.insTime,jdbcType=TIMESTAMP},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.updUser != null">
+                    #{item.updUser,jdbcType=VARCHAR},
+                </when>
+                <otherwise>
+                    DEFAULT,
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="item.updTime != null">
+                    #{item.updTime,jdbcType=TIMESTAMP}
+                </when>
+                <otherwise>
+                    DEFAULT
+                </otherwise>
+            </choose>
+            )
+        </foreach>
+    </insert>
+
+    <update id="updateProvinceStageSchemeTimeBySchemeIds">
+        update ba_province_stage_scheme
+        <set>
+            <if test="validTime != null">
+                valid_time = #{validTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="invalidTime != null">
+                invalid_time = #{invalidTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where scheme_id in
+        <foreach collection="schemeIdList" item="item" open="(" separator="," close=")">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+</mapper>
